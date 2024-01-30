@@ -55,6 +55,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utility", "proj\utility\utility.vcxproj", "{72CEB368-613B-3977-7BE6-0155A5F1DDBC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenSeesPy", "proj\openSeesPy\OpenSeesPy.vcxproj", "{F26CA968-C7ED-4246-A732-388C23BF8822}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B4F48ABB-2789-4753-AA82-7E2C1954D31A} = {B4F48ABB-2789-4753-AA82-7E2C1954D31A}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quickMain", "proj\quickMain\quickMain.vcxproj", "{79627CFD-A1B2-437B-BA21-2D2D67378B4D}"
 EndProject
