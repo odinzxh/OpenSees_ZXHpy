@@ -176,11 +176,15 @@ int OPF_ExperimentalCP()
         
         // read optional parameters until next dof ID is specified
         type = OPS_GetString();
-        while (type != 0 && sscanf(type, "%d", &dofID) != 1 &&
+        //while (type != 0 && sscanf(type, "%d", &dofID) != 1 &&
+        // bug fix by zxh
+        while ((strcmp(type, "Invalid String Input!")) != 0 && sscanf(type, "%d", &dofID) != 1 &&
              sscanf(type, "%*[dfouDFOU]%d", &dofID) != 1) {
             
             // scale factor
-            if (type != 0 && (strcmp(type, "-fact") == 0 || strcmp(type, "-factor") == 0)) {
+            //if (type != 0 && (strcmp(type, "-fact") == 0 || strcmp(type, "-factor") == 0)) {
+            // bug fix by zxh
+            if ((strcmp(type, "Invalid String Input!")) != 0 && (strcmp(type, "-fact") == 0 || strcmp(type, "-factor") == 0)) {
                 numdata = 1;
                 if (OPS_GetDoubleInput(&numdata, &factor(numSignals)) < 0) {
                     opserr << "WARNING invalid factor for control point: " << tag << endln;
@@ -196,7 +200,9 @@ int OPF_ExperimentalCP()
             }
             
             // response limits
-            if (type != 0 && (strcmp(type, "-lim") == 0 || strcmp(type, "-limit") == 0)) {
+            //if (type != 0 && (strcmp(type, "-lim") == 0 || strcmp(type, "-limit") == 0)) {
+            // bug fix by zxh
+            if ((strcmp(type, "Invalid String Input!")) != 0 && (strcmp(type, "-lim") == 0 || strcmp(type, "-limit") == 0)) {
                 numdata = 1;
                 if (OPS_GetDoubleInput(&numdata, &lowerLim(numSignals)) < 0) {
                     opserr << "WARNING invalid lower limit for control point: " << tag << endln;
@@ -216,7 +222,9 @@ int OPF_ExperimentalCP()
             }
             
             // relative signal references
-            if (type != 0 && (strcmp(type, "-relTrial") == 0 ||
+            //if (type != 0 && (strcmp(type, "-relTrial") == 0 ||
+            // bug fix by zxh
+                if ((strcmp(type, "Invalid String Input!")) != 0 && (strcmp(type, "-relTrial") == 0 ||
                 strcmp(type, "-relativeTrial") == 0 ||
                 strcmp(type, "-useRelTrial") == 0 ||
                 strcmp(type, "-useRelativeTrial") == 0)) {
@@ -225,7 +233,9 @@ int OPF_ExperimentalCP()
                 // read next argument
                 type = OPS_GetString();
             }
-            if (type != 0 && (strcmp(type, "-relOut") == 0 ||
+            //  if (type != 0 && (strcmp(type, "-relOut") == 0 ||
+            // bug fix by zxh
+            if ((strcmp(type, "Invalid String Input!")) != 0 && (strcmp(type, "-relOut") == 0 ||
                 strcmp(type, "-relativeOut") == 0 ||
                 strcmp(type, "-useRelOut") == 0 ||
                 strcmp(type, "-useRelativeOut") == 0)) {
@@ -234,7 +244,9 @@ int OPF_ExperimentalCP()
                 // read next argument
                 type = OPS_GetString();
             }
-            if (type != 0 && (strcmp(type, "-relCtrl") == 0 ||
+            // if (type != 0 && (strcmp(type, "-relCtrl") == 0 ||
+            // bug fix by zxh
+            if ((strcmp(type, "Invalid String Input!")) != 0 && (strcmp(type, "-relCtrl") == 0 ||
                 strcmp(type, "-relativeCtrl") == 0 ||
                 strcmp(type, "-useRelCtrl") == 0 ||
                 strcmp(type, "-useRelativeCtrl") == 0)) {
@@ -243,7 +255,9 @@ int OPF_ExperimentalCP()
                 // read next argument
                 type = OPS_GetString();
             }
-            if (type != 0 && (strcmp(type, "-relDaq") == 0 ||
+            // if (type != 0 && (strcmp(type, "-relDaq") == 0 ||
+            // bug fix by zxh
+            if ((strcmp(type, "Invalid String Input!")) != 0 && (strcmp(type, "-relDaq") == 0 ||
                 strcmp(type, "-relativeDaq") == 0 ||
                 strcmp(type, "-useRelDaq") == 0 ||
                 strcmp(type, "-useRelativeDaq") == 0)) {
