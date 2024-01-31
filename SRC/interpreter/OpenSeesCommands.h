@@ -159,6 +159,10 @@ public:
     int eigen(int typeSolver, double shift,
 	      bool generalizedAlgo, bool findSmallest);
 
+    //add zxh
+    void wipeExp();
+    //add zxh
+
 private:
 
     DL_Interpreter* interpreter;
@@ -580,4 +584,53 @@ void* OPS_BFGS();
 //              FirePattern, PySimple1Gen, TzSimple1Gen, Hfiber,
 //              hystereticBackbone, updateMaterialStage, updateMaterials,
 //              loadPackage
+
+/////////////////////////////////////////////////////////////////////////////
+// Declaration of all OpenFresco APIs except those declared in elementAPI.h//
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+// main OpenFresco objects commands 
+int OPF_ExperimentalCP();
+int OPF_ExperimentalSignalFilter();
+int OPF_ExperimentalControl();
+int OPF_ExperimentalSetup();
+int OPF_ExperimentalSite();
+int OPF_ExperimentalTangentStiff();
+int OPF_ExperimentalElement();
+int OPF_ExperimentalRecorder();
+
+// server OpenFresco commands
+int OPF_startLabServer();
+int OPF_startLabServerInteractive();
+int OPF_setupLabServer();
+int OPF_stepLabServer();
+int OPF_stopLabServer();
+int OPF_startSimAppSiteServer();
+int OPF_startSimAppElemServer();
+
+// clear OpenFresco object commands
+void OPF_clearExperimentalCPs();
+void OPF_clearExperimentalSignalFilters();
+void OPF_clearExperimentalControls();
+void OPF_clearExperimentalSetups();
+void OPF_clearExperimentalSites();
+void OPF_clearExperimentalTangentStiffs();
+
+// remove OpenFresco object commands
+bool OPF_removeExperimentalCP(int tag);
+bool OPF_removeExperimentalSignalFilter(int tag);
+bool OPF_removeExperimentalControl(int tag);
+bool OPF_removeExperimentalSetup(int tag);
+bool OPF_removeExperimentalSite(int tag);
+bool OPF_removeExperimentalTangentStiff(int tag);
+
+// miscellaneous OpenFresco commands
+int OPF_version();
+int OPF_recordExp();
+int OPF_wipeExp();
+int OPF_removeObject();
+
+
 #endif

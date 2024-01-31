@@ -138,6 +138,9 @@ bool setMPIDSOEFlag = false;
 #endif
 #endif
 
+// add zxh
+#include <ExperimentalSite.h>
+
 
 // active object
 static OpenSeesCommands* cmds = 0;
@@ -988,6 +991,35 @@ OpenSeesCommands::setFileDatabase(const char* filename)
 	opserr << "WARNING ran out of memory - database File " << filename << endln;
     }
 }
+
+
+void OpenSeesCommands::wipeExp()
+{
+    OPF_clearExperimentalCPs();
+    OPF_clearExperimentalSignalFilters();
+    OPF_clearExperimentalControls();
+    OPF_clearExperimentalSetups();
+    OPF_clearExperimentalSites();
+    OPF_clearExperimentalTangentStiffs();
+
+    OPS_clearAllUniaxialMaterial();
+    OPS_clearAllNDMaterial();
+    OPS_clearAllSectionForceDeformation();
+    OPS_clearAllFrictionModel();
+
+    //if (theDatabase != 0) {
+    //    delete theDatabase;
+    //    theDatabase = 0;
+    //}
+
+    if (theDomain != 0)
+        theDomain->clearAll();
+
+    ops_Dt = 0.0;
+}
+
+
+
 
 /////////////////////////////
 //// OpenSees APIs  /// /////
@@ -3723,3 +3755,203 @@ int OPS_sensitivityAlgorithm()
     return 0;
 }
 // Sensitivity:END /////////////////////////////////////////////
+
+
+
+/////////////////////////////
+//// OpenFresco APIs  ///////
+/////////////////////////////
+int OPF_version()
+{
+    if (OPS_SetString(OPF_VERSION) < 0) {
+        opserr << "WARNING failed to set version string\n";
+        return -1;
+    }
+
+    return 0;
+}
+
+
+int OPF_wipeExp()
+{
+    // wipe
+    if (cmds != 0) {
+        cmds->wipeExp();
+    }
+
+    return 0;
+}
+
+
+int OPF_removeObject()
+{
+    // make sure there is a minimum number of arguments
+    if (OPS_GetNumRemainingInputArgs() < 2) {
+        opserr << "WARNING insufficient number of removeExp component arguments\n";
+        opserr << "Want: removeExp type <specific args>\n";
+        return -1;
+    }
+
+    const char* type = OPS_GetString();
+    if (strcmp(type, "controlPoint") == 0) {
+        if (OPS_GetNumRemainingInputArgs() < 1) {
+            opserr << "WARNING invalid number of arguments\n";
+            opserr << "Want: removeExp controlPoint tag\n";
+            return -1;
+        }
+        int tag;
+        int numdata = 1;
+        if (OPS_GetIntInput(&numdata, &tag) < 0) {
+            opserr << "WARNING invalid removeExp controlPoint tag\n";
+            return -1;
+        }
+        if (OPF_removeExperimentalCP(tag) == false) {
+            opserr << "WARNING could not remove expControlPoint with tag " << tag << endln;
+            return -1;
+        }
+    }
+    else if (strcmp(type, "controlPoints") == 0) {
+        OPF_clearExperimentalCPs();
+    }
+    else if (strcmp(type, "signalFilter") == 0) {
+        if (OPS_GetNumRemainingInputArgs() < 1) {
+            opserr << "WARNING invalid number of arguments\n";
+            opserr << "Want: removeExp signalFilter tag\n";
+            return -1;
+        }
+        int tag;
+        int numdata = 1;
+        if (OPS_GetIntInput(&numdata, &tag) < 0) {
+            opserr << "WARNING invalid removeExp signalFilter tag\n";
+            return -1;
+        }
+        if (OPF_removeExperimentalSignalFilter(tag) == false) {
+            opserr << "WARNING could not remove expSignalFilter with tag " << tag << endln;
+            return -1;
+        }
+    }
+    else if (strcmp(type, "signalFilters") == 0) {
+        OPF_clearExperimentalSignalFilters();
+    }
+    else if (strcmp(type, "control") == 0) {
+        if (OPS_GetNumRemainingInputArgs() < 1) {
+            opserr << "WARNING invalid number of arguments\n";
+            opserr << "Want: removeExp control tag\n";
+            return -1;
+        }
+        int tag;
+        int numdata = 1;
+        if (OPS_GetIntInput(&numdata, &tag) < 0) {
+            opserr << "WARNING invalid removeExp control tag\n";
+            return -1;
+        }
+        if (OPF_removeExperimentalControl(tag) == false) {
+            opserr << "WARNING could not remove expControl with tag " << tag << endln;
+            return -1;
+        }
+    }
+    else if (strcmp(type, "controls") == 0) {
+        OPF_clearExperimentalControls();
+    }
+    else if (strcmp(type, "setup") == 0) {
+        if (OPS_GetNumRemainingInputArgs() < 1) {
+            opserr << "WARNING invalid number of arguments\n";
+            opserr << "Want: removeExp setup tag\n";
+            return -1;
+        }
+        int tag;
+        int numdata = 1;
+        if (OPS_GetIntInput(&numdata, &tag) < 0) {
+            opserr << "WARNING invalid removeExp setup tag\n";
+            return -1;
+        }
+        if (OPF_removeExperimentalSetup(tag) == false) {
+            opserr << "WARNING could not remove expSetup with tag " << tag << endln;
+            return -1;
+        }
+    }
+    else if (strcmp(type, "setups") == 0) {
+        OPF_clearExperimentalSetups();
+    }
+    else if (strcmp(type, "site") == 0) {
+        if (OPS_GetNumRemainingInputArgs() < 1) {
+            opserr << "WARNING invalid number of arguments\n";
+            opserr << "Want: removeExp site tag\n";
+            return -1;
+        }
+        int tag;
+        int numdata = 1;
+        if (OPS_GetIntInput(&numdata, &tag) < 0) {
+            opserr << "WARNING invalid removeExp site tag\n";
+            return -1;
+        }
+        if (OPF_removeExperimentalSite(tag) == false) {
+            opserr << "WARNING could not remove expSite with tag " << tag << endln;
+            return -1;
+        }
+    }
+    else if (strcmp(type, "sites") == 0) {
+        OPF_clearExperimentalSites();
+    }
+    else if (strcmp(type, "tangentStiff") == 0) {
+        if (OPS_GetNumRemainingInputArgs() < 1) {
+            opserr << "WARNING invalid number of arguments\n";
+            opserr << "Want: removeExp tangentStiff tag\n";
+            return -1;
+        }
+        int tag;
+        int numdata = 1;
+        if (OPS_GetIntInput(&numdata, &tag) < 0) {
+            opserr << "WARNING invalid removeExp tangentStiff tag\n";
+            return -1;
+        }
+        if (OPF_removeExperimentalTangentStiff(tag) == false) {
+            opserr << "WARNING could not remove expTangentStiff with tag " << tag << endln;
+            return -1;
+        }
+    }
+    else if (strcmp(type, "tangentStiffs") == 0) {
+        OPF_clearExperimentalTangentStiffs();
+    }
+    else if (strcmp(type, "recorder") == 0) {
+        if (OPS_GetNumRemainingInputArgs() < 1) {
+            opserr << "WARNING invalid number of arguments\n";
+            opserr << "Want: removeExp recorder tag\n";
+            return -1;
+        }
+        int tag;
+        int numdata = 1;
+        if (OPS_GetIntInput(&numdata, &tag) < 0) {
+            opserr << "WARNING invalid removeExp recorder tag\n";
+            return -1;
+        }
+        ExperimentalSite* theSite = OPF_getExperimentalSiteFirst();
+        if (theSite == 0) {
+            opserr << "WARNING failed to get first experimental site\n";
+            return -1;
+        }
+        if ((theSite->removeRecorder(tag)) < 0) {
+            opserr << "WARNING could not remove expRecorder with tag " << tag << endln;
+            return -1;
+        }
+    }
+    else if (strcmp(type, "recorders") == 0) {
+        ExperimentalSite* theSite = OPF_getExperimentalSiteFirst();
+        if (theSite == 0) {
+            opserr << "WARNING failed to get first experimental site\n";
+            return -1;
+        }
+        if ((theSite->removeRecorders()) < 0) {
+            opserr << "WARNING could not remove expRecorders\n";
+            return -1;
+        }
+    }
+    else {
+        // experimental object type not recognized
+        opserr << "WARNING unknown removeExp type: "
+            << type << ": check the manual\n";
+        return -1;
+    }
+
+    return 0;
+}
