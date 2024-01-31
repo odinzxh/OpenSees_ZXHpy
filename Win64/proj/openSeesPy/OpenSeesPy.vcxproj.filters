@@ -70,6 +70,30 @@
     <ClCompile Include="..\..\..\SRC\interpreter\PythonStream.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\SRC\interpreter\ExpControlCommands.cpp">
+      <Filter>opfinterpret</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SRC\interpreter\ExpElementCommands.cpp">
+      <Filter>opfinterpret</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SRC\interpreter\ExpRecorderCommands.cpp">
+      <Filter>opfinterpret</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SRC\interpreter\ExpServerCommands.cpp">
+      <Filter>opfinterpret</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SRC\interpreter\ExpSetupCommands.cpp">
+      <Filter>opfinterpret</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SRC\interpreter\ExpSignalFilterCommands.cpp">
+      <Filter>opfinterpret</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SRC\interpreter\ExpSiteCommands.cpp">
+      <Filter>opfinterpret</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SRC\interpreter\ExpTangentStiffCommands.cpp">
+      <Filter>opfinterpret</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\SRC\classTags.h">
@@ -96,6 +120,9 @@
     <ClInclude Include="..\..\..\SRC\interpreter\OpenSeesReliabilityCommands.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\SRC\FrescoGlobals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -106,6 +133,9 @@
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{85a90bf6-a366-4a39-8951-a3108ee3751a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="opfinterpret">
+      <UniqueIdentifier>{c717e9cb-601d-474e-a5c7-11f7f9487fac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
