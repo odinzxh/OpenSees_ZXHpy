@@ -43,6 +43,8 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include "OpenSeesCommands.h"
 #include <OPS_Globals.h>
 
+
+
 #define OPS_PYVERSION "3.4.0.4"
 
 static PythonWrapper* wrapper = 0;
@@ -2875,6 +2877,246 @@ static PyObject *Py_ops_NDTest(PyObject *self, PyObject *args) {
     return wrapper->getResults();
 }
 
+///////////////////////////////////////////////////////
+/////// Python wrapper functions for OpenFresco ///////
+///////////////////////////////////////////////////////
+static PyObject* Py_opf_expControlPoint(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_ExperimentalCP() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_expSignalFilter(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_ExperimentalSignalFilter() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_expControl(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_ExperimentalControl() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_expSetup(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_ExperimentalSetup() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_expSite(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_ExperimentalSite() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_expTangentStiff(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_ExperimentalTangentStiff() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_expElement(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_ExperimentalElement() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_expRecorder(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_ExperimentalRecorder() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_recordExp(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_recordExp() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_startLabServer(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_startLabServer() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_setupLabServer(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_setupLabServer() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_stepLabServer(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_stepLabServer() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_stopLabServer(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_stopLabServer() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_startSimAppSiteServer(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_startSimAppSiteServer() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_startSimAppElemServer(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_startSimAppElemServer() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_wipeExp(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_wipeExp() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_removeExp(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_removeObject() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+static PyObject* Py_opf_version(PyObject* self, PyObject* args)
+{
+	wrapper->resetCommandLine((int)PyTuple_Size(args), 1, args);
+	
+	if (OPF_version() < 0) {
+		opserr << (void*)0;
+		return NULL;
+	}
+	
+	return wrapper->getResults();
+}
+
+
+
+
+
 /////////////////////////////////////////////////
 ////////////// Add Python commands //////////////
 /////////////////////////////////////////////////
@@ -3104,6 +3346,27 @@ PythonWrapper::addOpenSeesCommands()
     addCommand("runImportanceSamplingAnalysis", &Py_ops_runImportanceSamplingAnalysis);
     addCommand("IGA", &Py_ops_IGA);
     addCommand("NDTest", &Py_ops_NDTest);
+
+
+    addCommand("expControlPoint", &Py_opf_expControlPoint);
+	addCommand("expSignalFilter", &Py_opf_expSignalFilter);
+	addCommand("expControl", &Py_opf_expControl);
+	addCommand("expSetup", &Py_opf_expSetup);
+	addCommand("expSite", &Py_opf_expSite);
+	addCommand("expTangentStiff", &Py_opf_expTangentStiff);
+	addCommand("expElement", &Py_opf_expElement);
+	addCommand("expRecorder", &Py_opf_expRecorder);
+	addCommand("recordExp", &Py_opf_recordExp);
+	addCommand("startLabServer", &Py_opf_startLabServer);
+	addCommand("setupLabServer", &Py_opf_setupLabServer);
+	addCommand("stepLabServer", &Py_opf_stepLabServer);
+	addCommand("stopLabServer", &Py_opf_stopLabServer);
+	addCommand("startSimAppSiteServer", &Py_opf_startSimAppSiteServer);
+	addCommand("startSimAppElemServer", &Py_opf_startSimAppElemServer);
+	addCommand("wipeExp", &Py_opf_wipeExp);
+	addCommand("removeExp", &Py_opf_removeExp);
+	addCommand("opfversion", &Py_opf_version);
+
 
     PyMethodDef method = {NULL,NULL,0,NULL};
     methodsOpenSees.push_back(method);
