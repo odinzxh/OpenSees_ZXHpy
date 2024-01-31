@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\SRC\actor\actor\Actor.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\channel\Channel.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\address\ChannelAddress.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\objectBroker\FEM_ObjectBroker.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\objectBroker\FEM_ObjectBrokerAllClasses.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\channel\HTTP.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\message\Message.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\actor\MovableObject.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\objectBroker\ObjectBroker.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\shadow\Shadow.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\channel\Socket.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\channel\TCP_Socket.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\channel\UDP_Socket.cpp" />
+    <ClCompile Include="..\..\..\SRC\actor\channel\TCP_SocketSSL.cpp">
+      <Filter>opf</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\SRC\actor\actor\Actor.h" />
+    <ClInclude Include="..\..\..\SRC\actor\channel\Channel.h" />
+    <ClInclude Include="..\..\..\SRC\actor\address\ChannelAddress.h" />
+    <ClInclude Include="..\..\..\SRC\actor\objectBroker\FEM_ObjectBroker.h" />
+    <ClInclude Include="..\..\..\SRC\actor\objectBroker\FEM_ObjectBrokerAllClasses.h" />
+    <ClInclude Include="..\..\..\SRC\actor\message\Message.h" />
+    <ClInclude Include="..\..\..\SRC\actor\actor\MovableObject.h" />
+    <ClInclude Include="..\..\..\SRC\actor\objectBroker\ObjectBroker.h" />
+    <ClInclude Include="..\..\..\SRC\actor\shadow\Shadow.h" />
+    <ClInclude Include="..\..\..\SRC\actor\channel\Socket.h" />
+    <ClInclude Include="..\..\..\SRC\actor\channel\TCP_Socket.h" />
+    <ClInclude Include="..\..\..\SRC\actor\channel\UDP_Socket.h" />
+    <ClInclude Include="..\..\..\SRC\actor\channel\TCP_SocketSSL.h">
+      <Filter>opf</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="opf">
+      <UniqueIdentifier>{a09c0d90-f032-4a4f-b0b8-8c6bd6505351}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
