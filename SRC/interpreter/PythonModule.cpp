@@ -47,6 +47,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include <cstring>
 #include <cctype>
 
+
 // define opserr
 static PythonStream sserr;
 OPS_Stream *opserrPtr = &sserr;
@@ -370,6 +371,7 @@ PyMethodDef *getmethodsFunc() {
 
 void cleanupFunc() {
     module->getCmds().wipe();
+    module->getCmds().wipeExp();
     if (module != 0) {
         delete module;
     }
