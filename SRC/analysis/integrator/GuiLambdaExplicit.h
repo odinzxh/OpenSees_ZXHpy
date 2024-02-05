@@ -22,22 +22,24 @@
 // $Date$
 // $URL$
 
-#ifndef KRAlphaExplicit_h
-#define KRAlphaExplicit_h
+#ifndef GuiLambdaExplicit_h
+#define GuiLambdaExplicit_h
 
-// Developed: Chinmoy Kolay (chk311@lehigh.edu)
-// Implemented: Andreas Schellenberg (andreas.schellenberg@gmail.com)
-// Created: 08/14
+// Developed: Gui Y, Wang J T, Jin F, et al. (jinfeng@tsinghua.edu.cn)
+// Implemented: Xiaohang Zhang (xiaohangzhang@tju.edu.cn) 
+// Implemented: Ning Li (neallee@tju.edu.cn)
+// Created: 01/24
 // Revision: A
 //
-// Description: This file contains the class definition for KRAlphaExplicit.
-// KRAlphaExplicit is an algorithmic class for performing a transient analysis
-// using the explicit Kolay-Ricles integration scheme based on the midpoint rule.
+// Description: This file contains the class definition for GuiLambdaExplicit.
+// GuiLambdaExplicit is an algorithmic class for performing a transient analysis
 //
-// Reference: Kolay, C. and J. Ricles (2014). "Development of a family of
-// unconditionally stable explicit direct integration algorithms with
-// controllable numerical energy dissipation." Earthquake Engineering and
-// Structural Dynamics, 43(9):1361?380.
+// Reference: Gui Y, Wang J T, Jin F, et al.
+// Development of a family of explicit algorithms for structural dynamics with unconditional stability.
+// Nonlinear Dynamics, 2014, 77(4) : 1157 - 1170.
+
+
+
 
 #include <TransientIntegrator.h>
 
@@ -46,16 +48,16 @@ class FE_Element;
 class Vector;
 class Matrix;
 
-class KRAlphaExplicit : public TransientIntegrator
+class GuiLambdaExplicit : public TransientIntegrator
 {
 public:
     // constructors
-    KRAlphaExplicit();
-    KRAlphaExplicit(double rhoInf,
+    GuiLambdaExplicit();
+    GuiLambdaExplicit(double lambda ,
         bool updElemDisp = false);
     
     // destructor
-    ~KRAlphaExplicit();
+    ~GuiLambdaExplicit();
     
     // method to set up the system of equations
     int formTangent(int statFlag);
@@ -82,14 +84,11 @@ public:
 protected:
     
 private:
-    double alphaM;
-    double alphaF;
-    double beta;
-    double gamma;
+    double lambda;
     bool updElemDisp;  // a flag indicating if element displacements are updated during commit
     double deltaT;
     
-    Matrix *alpha1, *alpha3;  // integration parameter matrices, alpha2 = (0.5 + gamma)*alpha1
+    Matrix *alpha1;  // integration parameter matrices, alpha2 = *alpha1
     Matrix *Mhat;             // effective mass matrix for linear SOE
     
     int updateCount;                            // method should only have one update per step
@@ -97,7 +96,6 @@ private:
     double c1, c2, c3;                          // some constants we need to keep
     Vector *Ut, *Utdot, *Utdotdot;              // response quantities at time t
     Vector *U, *Udot, *Udotdot;                 // response quantities at time t + deltaT
-    Vector *Ualpha, *Ualphadot, *Ualphadotdot;  // response quantities at time t + alpha*deltaT
     Vector *Utdothat;                           // velocity-like vector at time t
 };
 

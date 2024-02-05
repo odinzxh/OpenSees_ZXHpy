@@ -566,6 +566,8 @@ void* OPS_CentralDifference();
 void* OPS_CentralDifferenceAlternative();
 void* OPS_CentralDifferenceNoDamping();
 void* OPS_ExplicitDifference();
+void* OPS_CRExplicit();  //add by Xiaohang Zhang (xiaohangzhang@tju.edu.cn)
+void* OPS_GuiLambdaExplicit();   //add by Xiaohang Zhang (xiaohangzhang@tju.edu.cn)
 
 void* OPS_LinearAlgorithm();
 void* OPS_NewtonRaphsonAlgorithm();

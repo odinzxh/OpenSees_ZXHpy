@@ -389,6 +389,12 @@
     <ClCompile Include="..\..\..\SRC\analysis\analysis\SDFAnalysis.cpp">
       <Filter>analysis</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\SRC\analysis\integrator\CRExplicit.cpp">
+      <Filter>integrator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SRC\analysis\integrator\GuiLambdaExplicit.cpp">
+      <Filter>integrator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\SRC\analysis\analysis\Analysis.h">
@@ -731,6 +737,12 @@
       <Filter>integrator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\SRC\analysis\integrator\StagedNewmark.h">
+      <Filter>integrator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\SRC\analysis\integrator\CRExplicit.h">
+      <Filter>integrator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\SRC\analysis\integrator\GuiLambdaExplicit.h">
       <Filter>integrator</Filter>
     </ClInclude>
   </ItemGroup>

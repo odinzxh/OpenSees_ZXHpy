@@ -1786,7 +1786,13 @@ int OPS_Integrator()
 
 	} else if (strcmp(type, "ExplicitDifference") == 0) {
     ti = (TransientIntegrator*)OPS_ExplicitDifference();
-
+    }
+    else if (strcmp(type, "CRExplicit") == 0) {
+    ti = (TransientIntegrator*)OPS_CRExplicit();
+        }  //add by Xiaohang Zhang (xiaohangzhang@tju.edu.cn)
+    else if (strcmp(type, "GuiLambdaExplicit") == 0) {
+    ti = (TransientIntegrator*)OPS_GuiLambdaExplicit();
+     //add by Xiaohang Zhang (xiaohangzhang@tju.edu.cn)
     } else {
 	opserr<<"WARNING unknown integrator type "<<type<<"\n";
     }
