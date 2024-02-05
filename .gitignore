@@ -1,3 +1,8 @@
+# 取消lib和dll的忽略，为了openfresco同步，add by zxh
+#增加win64的忽略
+
+Win64/lib/
+
 # Prerequisites
 *.d
 
@@ -17,7 +22,7 @@
 # Compiled Dynamic libraries
 *.so*
 *.dylib
-*.dll
+#*.dll
 *.pyd
 
 # Fortran module files
@@ -28,7 +33,7 @@
 *.lai
 *.la
 *.a
-*.lib
+#*.lib
 
 # Executables
 *.exe
